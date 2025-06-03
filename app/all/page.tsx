@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import ProductAll from '@/components/ProductAll'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <Header/>
@@ -13,4 +13,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
