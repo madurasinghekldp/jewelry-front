@@ -1,5 +1,5 @@
 'use client';
-import { Autocomplete, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Popover, TextField, Typography } from '@mui/material'
+import { Autocomplete, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Popover, TextField } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { FaCaretDown, FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import Image from 'next/image'
@@ -13,15 +13,7 @@ const Header = () => {
 
     const [searchedText,setSearchedText] = useState<string>("");
 
-    const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 }
-    ]
+  
 
     const cartList = [
         {
@@ -140,7 +132,7 @@ const Header = () => {
             >
                 <div className='flex flex-col p-2 w-[250px]'>
                     <p className=' text-center font-bold mb-1'>Your Cart Items</p>
-                    {cartList.map((item:any,index)=>(
+                    {cartList.map((item,index)=>(
                         <div className='flex flex-row p-2 items-center gap-2 hover:bg-gray-300' key={index}>
                             <Image src={item.url} alt='' width={60} height={60} className='rounded'/>
                             <p className=' text-gray-500 truncate text-ellipsis'>{item.name}</p>
