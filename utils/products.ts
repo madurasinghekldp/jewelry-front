@@ -144,3 +144,7 @@ export const newItems = products
     image: item.image,
     material: item.material,
   }));
+
+  export const productById = (id:number) => {
+    return products.find((item)=>item.id===Number(id));
+  }
