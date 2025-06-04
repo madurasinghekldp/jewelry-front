@@ -2,22 +2,27 @@
 import Header from '@/components/Header'
 import ImageSelection from '@/components/ImageSelection'
 import MediaPreview from '@/components/MediaPreview'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
-const Page = () => {
+const Page = ({params}:{params: Promise<{ id: number }>}) => {
 
+    const id = params;
     const [media, setMedia] = React.useState<string>("");
-    const mediaList = [
-        "/videos/5414-183788464_tiny.mp4",
-        "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
-        "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
-        "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
-        "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
-        "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
-        "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
-        "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
-        "/images/Sapphire_Elegance_with_Diamond_Sparkle.png"
-    ]
+    const mediaList = useMemo(() => [
+    "/videos/5414-183788464_tiny.mp4",
+    "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
+    "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
+    "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
+    "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
+    "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
+    "/images/Sapphire_Elegance_with_Diamond_Sparkle.png",
+    "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
+    "/images/Sapphire_Elegance_with_Diamond_Sparkle.png"
+    ], []);
+
+    useEffect(()=>{
+        console.log("id",id);
+    },[id]);
 
     useEffect(() => {
         if (mediaList.length > 0 && media==="") {

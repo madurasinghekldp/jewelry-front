@@ -4,6 +4,7 @@ import { FaCaretLeft, FaCaretRight } from 'react-icons/fa'
 import CardItem from './Card';
 import { popularItems } from '@/utils/products';
 import { averageStars } from '@/utils/reviews';
+import Link from 'next/link';
 
 const PopularDesigns = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -29,9 +30,8 @@ const PopularDesigns = () => {
           <p className='font-bold sm:text-3xl text-xl'>Popular Designs</p>
         </div>
         <div className='grid-cols-1 w-1/12 flex justify-end items-center'>
-          <button className='flex flex-row justify-center items-center hover:cursor-pointer'>
-            more <FaCaretRight />
-          </button>
+          
+          <Link className='flex flex-row justify-center items-center' href="/all">more <FaCaretRight /></Link>
         </div>
       </div>
 
@@ -50,6 +50,7 @@ const PopularDesigns = () => {
             {popularItems.map((item) => (
               <CardItem 
               key={item.id} 
+              id={item.id}
               url={item.image} 
               name={item.name} 
               price={item.price} 

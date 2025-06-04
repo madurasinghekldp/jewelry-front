@@ -13,6 +13,7 @@ const ProductAll = () => {
         {products.map((item) => (
             <CardItem 
             key={item.id} 
+            id={item.id}
             url={item.image} 
             name={item.name} 
             price={item.price}
