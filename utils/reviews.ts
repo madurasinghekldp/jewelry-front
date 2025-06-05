@@ -170,3 +170,7 @@ export const averageStars = (id:number) => {
     const averageStars = filteredReviews.reduce((sum, review) => sum + review.stars, 0) / filteredReviews.length;
     return averageStars;
 }
+
+export const reviewsByProductId = (id:number) => {
+    return reviews.filter((r) => r.productId === Number(id));
+}
