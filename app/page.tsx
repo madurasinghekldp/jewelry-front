@@ -1,4 +1,5 @@
 
+import FooterComponent from "@/components/FooterComponent";
 import Header from "@/components/Header";
 import ImageSlider from "@/components/ImageSlider";
 import NewDesigns from "@/components/NewDesigns";
@@ -13,6 +14,7 @@ export default function Home() {
         <PopularDesigns/>
         <NewDesigns/>
       </div>
+      <FooterComponent/>
     </div>
   );
 }

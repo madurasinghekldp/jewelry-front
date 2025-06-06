@@ -1,4 +1,5 @@
 'use client';
+import FooterComponent from '@/components/FooterComponent';
 import Header from '@/components/Header'
 import ImageSelection from '@/components/ImageSelection'
 import MediaPreview from '@/components/MediaPreview'
@@ -88,7 +89,7 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                         readOnly />
                         {stars(product?.id).toPrecision(2)}
                     </div>
-                    <div className='relative max-h-[300px] md:max-h-[100px]'>
+                    <div className='relative max-h-[300px] md:max-h-[150px]'>
                         <div className='pointer-events-none absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent'></div>
                         <div className="overflow-y-auto scrollbar-hide h-full">
                             <p className="text-justify">{product?.description}</p>
@@ -142,6 +143,7 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                 </div>
             </div>
         </div>
+        <FooterComponent/>
     </div>
   )
 }
