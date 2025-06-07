@@ -1,16 +1,23 @@
 'use client';
 import { products } from '@/utils/products'
-import React, { useState } from 'react'
+import { use, useState } from 'react'
 import CardItem from './Card'
 import { averageStars } from '@/utils/reviews'
 import { BsFilterSquare } from 'react-icons/bs';
-import { Popover } from '@mui/material';
+import {  Collapse, FormControlLabel, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Popover, Radio, RadioGroup } from '@mui/material';
+import { MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { TbCategory } from 'react-icons/tb';
+
 
 const ProductAll = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [anchorE1, setAnchorEl] = React.useState<HTMLElement | null>(null);
+  const [openCategories, setOpenCategories] = useState(false);
+  const [openGender, setOpenGender] = useState(false);
+  const [openMaterial, setOpenMaterial] = useState(false);
+  const [tags, setTags] = useState<any[]>([]);
+  const [anchorE1, setAnchorEl] = useState<HTMLElement | null>(null);
   const openFilter = Boolean(anchorE1);
   const idFilter = openFilter ? 'simple-popover' : undefined;
+
   const stars = (id:number) => {
       return averageStars(id);
   }
@@ -21,6 +28,31 @@ const ProductAll = () => {
   const handleCloseFilter = () => {
       setAnchorEl(null);
   };
+
+  const handleClickCategories = () => {
+    setOpenCategories(!openCategories);
+  };
+
+  const handleClickGender = () => {
+    setOpenGender(!openGender);
+  };
+  const handleClickMaterial = () => {
+    setOpenMaterial(!openMaterial);
+  };
+
+  const handleChangeCategory = (event: React.ChangeEvent, value: string) => {
+    
+    console.log(tags);
+  }
+  const handleChangeGender = (event: React.ChangeEvent, value: string) => {
+    
+    console.log(tags);
+  }
+  const handleChangeMaterial = (event: React.ChangeEvent, value: string) => {
+    
+    console.log(tags);
+  }
+
   return (
     <div className='mt-20'>
       <div className='flex flex-col'>
@@ -37,22 +69,82 @@ const ProductAll = () => {
                 vertical: 'bottom',
                 horizontal: 'left',
                 }}>
-            <div className='flex flex-col'>
-              <p className='text-gray-500 text-sm p-2'>Filter by:</p>
-              <div className='flex flex-col p-2'>
-                <label className='text-gray-500 text-sm mb-1'>Category</label>
-                <select className='border border-gray-300 rounded p-1'>
-                  <option value="all">All</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="clothing">Clothing</option>
-                  <option value="accessories">Accessories</option>
-                </select>
-              </div>
-              <div className='flex flex-col p-2'>
-                <label className='text-gray-500 text-sm mb-1'>Price Range</label>
-                <input type="range" min="0" max="1000" className='w-full' />
-              </div>
-            </div>
+            <List
+              sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+              subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                  Filter By
+                </ListSubheader>
+              }
+            >
+              <ListItemButton onClick={handleClickCategories}>
+                <ListItemIcon>
+                  <TbCategory />
+                </ListItemIcon>
+                <ListItemText primary="Categories" />
+                {openCategories ? <MdExpandLess /> : <MdExpandMore />}
+              </ListItemButton>
+              <Collapse in={openCategories} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <RadioGroup
+                    sx={{ pl: 4}}
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue=""
+                    name="radio-buttons-group"
+                    onChange={handleChangeCategory}
+                  >
+                    <FormControlLabel value="jewelry" control={<Radio />} label="Jewelry" />
+                    <FormControlLabel value="stone" control={<Radio />} label="Stones" />
+                  </RadioGroup>
+                </List>
+              </Collapse>
+
+              <ListItemButton onClick={handleClickGender}>
+                <ListItemIcon>
+                  <TbCategory />
+                </ListItemIcon>
+                <ListItemText primary="Gender" />
+                {openGender ? <MdExpandLess /> : <MdExpandMore />}
+              </ListItemButton>
+              <Collapse in={openGender} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <RadioGroup
+                    sx={{ pl: 4}}
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue=""
+                    name="radio-buttons-group"
+                    onChange={handleChangeGender}
+                  >
+                    <FormControlLabel value="gents" control={<Radio />} label="Gents" />
+                    <FormControlLabel value="ladies" control={<Radio />} label="Ladies" />
+                  </RadioGroup>
+                </List>
+              </Collapse>
+
+              <ListItemButton onClick={handleClickMaterial}>
+                <ListItemIcon>
+                  <TbCategory />
+                </ListItemIcon>
+                <ListItemText primary="Material" />
+                {openMaterial ? <MdExpandLess /> : <MdExpandMore />}
+              </ListItemButton>
+              <Collapse in={openMaterial} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <RadioGroup
+                    sx={{ pl: 4}}
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue=""
+                    name="radio-buttons-group"
+                    onChange={handleChangeMaterial}
+                  >
+                    <FormControlLabel value="gold" control={<Radio />} label="Gold" />
+                    <FormControlLabel value="silver" control={<Radio />} label="Silver" />
+                  </RadioGroup>
+                </List>
+              </Collapse>
+            </List>
           </Popover>
         </div>
         <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4

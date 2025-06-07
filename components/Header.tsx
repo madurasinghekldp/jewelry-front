@@ -8,27 +8,15 @@ import { VscListUnordered } from 'react-icons/vsc';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { CiLogin, CiLogout } from 'react-icons/ci';
 import { products } from '@/utils/products';
+import { FaList, FaPhone } from 'react-icons/fa6';
+import Link from 'next/link';
+import { cartItems } from '@/utils/cart';
 
 const Header = () => {
 
     const [searchedText,setSearchedText] = useState<string>("");
 
   
-
-    const cartList = [
-        {
-            url:"https://cdn.pixabay.com/photo/2019/02/11/19/53/jewel-3990596_960_720.jpg",
-            name:"Silver Earring"
-        },
-        {
-            url:"https://cdn.pixabay.com/photo/2019/02/11/19/53/jewel-3990596_960_720.jpg",
-            name:"Silver Earring"
-        },
-        {
-            url:"https://cdn.pixabay.com/photo/2019/02/11/19/53/jewel-3990596_960_720.jpg",
-            name:"Silver Earring"
-        }
-    ]
 
     const handleSearchInputChanged = (event:React.SyntheticEvent,value:string) => {
         setSearchedText(value);
@@ -81,7 +69,8 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex flex-row bg-gray-900/90 h-15 w-full justify-evenly items-center">
-        <div className=" text-white">Contact Us : 0717772223</div>
+        <div className="md:flex text-white hidden">Contact Us : 0717772223</div>
+        <div className="flex text-white md:hidden mx-4"><FaPhone /></div>
         <div className='w-100'>
             <Autocomplete
             sx={{
@@ -116,7 +105,7 @@ const Header = () => {
                 onChange={handleOnChanged}
             />
         </div>
-        <div className="flex flex-row gap-10 text-white">
+        <div className="md:flex flex-row gap-10 text-white hidden">
             <span aria-describedby={idCart} onClick={handleClickCart} className=' hover:cursor-pointer'><FaShoppingCart/></span>
             <span aria-describedby={idUser} onClick={handleClickUser} className=' hover:cursor-pointer'><FaUserCircle/></span>
             <span aria-describedby={idDown} onClick={handleClickDown} className=' hover:cursor-pointer'><FaCaretDown/></span>
@@ -132,16 +121,16 @@ const Header = () => {
             >
                 <div className='flex flex-col p-2 w-[250px]'>
                     <p className=' text-center font-bold mb-1'>Your Cart Items</p>
-                    {cartList.map((item,index)=>(
-                        <div className='flex flex-row p-2 items-center gap-2 hover:bg-gray-300' key={index}>
-                            <Image src={item.url} alt='' width={60} height={60} className='rounded'/>
+                    {cartItems.map((item,index)=>(
+                        <div className='flex flex-row p-2 items-center gap-2 hover:bg-gray-300' key={item.id}>
+                            <Image src={item.image} alt='' width={60} height={60} className='rounded w-[60px] h-[60px] shrink-0'/>
                             <p className=' text-gray-500 truncate text-ellipsis'>{item.name}</p>
                         </div>
                     ))}
                     <div className='mx-auto mt-2'>
-                        <button className=' bg-black text-white px-2 py-1 rounded-3xl text-xs'>
+                        <Link className=' bg-black text-white px-2 py-1 rounded-3xl text-xs' href={'/cart'}>
                             Go To Cart
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </Popover>
@@ -216,6 +205,7 @@ const Header = () => {
                 </div>
             </Popover>
         </div>
+        <div className="flex text-white md:hidden mx-4"><FaList /></div>
   </div>
   )
 }
