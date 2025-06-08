@@ -1,6 +1,6 @@
 'use client';
 import { products } from '@/utils/products'
-import { use, useState } from 'react'
+import {  useState } from 'react'
 import CardItem from './Card'
 import { averageStars } from '@/utils/reviews'
 import { BsFilterSquare } from 'react-icons/bs';

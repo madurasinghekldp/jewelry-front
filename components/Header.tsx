@@ -154,14 +154,17 @@ const Header = () => {
                             <ListItemText primary="Account" />
                             </ListItemButton>
                         </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                            <ListItemIcon>
-                                <VscListUnordered />
-                            </ListItemIcon>
-                            <ListItemText primary="Orders" />
-                            </ListItemButton>
-                        </ListItem>
+                        <Link href={'/orders'} >
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                <ListItemIcon>
+                                    <VscListUnordered />
+                                </ListItemIcon>
+                                <ListItemText primary="Orders" />
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
+                        
                         <ListItem disablePadding>
                             <ListItemButton>
                             <ListItemIcon>

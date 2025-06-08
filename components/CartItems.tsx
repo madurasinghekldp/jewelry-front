@@ -8,7 +8,7 @@ const CartItems = () => {
   return (
     <div className='mt-20 flex flex-col'>
         <div className='text-xl text-white bg-black  py-2 px-4 rounded-full mx-auto'>Your Cart Items</div>
-        <div className='flex md:flex-row flex-col justify-center items-center mt-3'>
+        <div className='flex md:flex-row flex-col justify-center items-center mt-10'>
             <div className='flex flex-col w-full px-3'>
                 {
                     cartItems.map((item)=>
@@ -26,7 +26,30 @@ const CartItems = () => {
                     )
                 }
             </div>
-            <div className='w-full min-h-[300px] bg-gray-300 px-3 mt-3 md:mt-0'>shipping</div>
+            <div className='w-full min-h-[300px] bg-gray-300 px-3 mt-3 md:mt-0 rounded'>
+                <div className='flex flex-col h-full p-5'>
+                    <div className='flex flex-row justify-between my-2 text-gray-500'>
+                        <p className='text-lg font-semibold'>Item Amount</p>
+                        <p className='text-2xl font-bold'>Rs.{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0.00)}</p>
+                    </div>
+                    <div className='flex flex-row justify-between my-2 text-gray-500'>
+                        <p className='text-lg font-semibold'>Shipping Amount</p>
+                        <p className='text-2xl font-bold'>Rs.500.00</p>
+                    </div>
+                    <div className='flex flex-row justify-between my-2 text-gray-500'>
+                        <p className='text-lg font-semibold'>Total Amount</p>
+                        <p className='text-2xl font-bold'>Rs.{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 500.00)}</p>
+                    </div>
+                    <div className='flex justify-center items-center'>
+                        <button className='bg-black hover:bg-gray-800 text-white px-4 py-2 rounded mt-3 max-w-[300px]'>Checkout</button>
+                    </div>
+                    <div className='border border-t-1 border-gray-400 mt-3'></div>
+                    <div className='flex flex-row m-2'>
+                        <Image src={'/images/visacard.png'} alt={''} width={100} height={100} className='w-[50px] h-[20px] mx-2'/>   
+                        <Image src={'/images/mastercard.png'} alt={''} width={100} height={100} className='w-[30px] h-[20px] mx-2'/>           
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
   )
