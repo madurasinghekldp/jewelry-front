@@ -14,3 +14,11 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+.clip-1{
+  clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
+}
+
+.clip-2{
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+}

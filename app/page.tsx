@@ -1,4 +1,5 @@
 
+import Banner from "@/components/Banner";
 import FooterComponent from "@/components/FooterComponent";
 import Header from "@/components/Header";
 import ImageSlider from "@/components/ImageSlider";
@@ -10,7 +11,8 @@ export default function Home() {
     <div>
       <Header/>
       <div className="md:mx-10 mx-5">
-        <ImageSlider/>
+        {/* <ImageSlider/> */}
+        <Banner/>
         <PopularDesigns/>
         <NewDesigns/>
       </div>
