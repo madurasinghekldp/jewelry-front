@@ -7,28 +7,21 @@ import { BsFilterSquare } from 'react-icons/bs';
 import {  Collapse, FormControlLabel, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Popover, Radio, RadioGroup } from '@mui/material';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import { TbCategory } from 'react-icons/tb';
+import { FaRegWindowClose } from 'react-icons/fa';
+import { FaAnglesRight } from 'react-icons/fa6';
+import { IoMdClose } from 'react-icons/io';
 
 
 const ProductAll = () => {
   const [openCategories, setOpenCategories] = useState(false);
   const [openGender, setOpenGender] = useState(false);
   const [openMaterial, setOpenMaterial] = useState(false);
+  const [openSidebar,setOpenSideBar] = useState(false);
   const [tags, setTags] = useState<any[]>([]);
-  const [anchorE1, setAnchorEl] = useState<HTMLElement | null>(null);
-  const openFilter = Boolean(anchorE1);
-  const idFilter = openFilter ? 'simple-popover' : undefined;
 
   const stars = (id:number) => {
       return averageStars(id);
   }
-  const handleClickFilter = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseFilter = () => {
-      setAnchorEl(null);
-  };
-
   const handleClickCategories = () => {
     setOpenCategories(!openCategories);
   };
@@ -55,27 +48,18 @@ const ProductAll = () => {
 
   return (
     <div className='mt-20'>
-      <div className='flex flex-col'>
-        <div className='my-3'>
-          <button aria-describedby={idFilter} onClick={handleClickFilter} className='flex flex-row border border-gray-400 rounded p-2 justify-center items-center'>
-            <BsFilterSquare className='mr-3' /> Filter Items
-          </button>
-          <Popover 
-                id={idFilter}
-                open={openFilter}
-                anchorEl={anchorE1}
-                onClose={handleCloseFilter}
-                anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-                }}>
-            <List
+      <div className='relative flex flex-col overflow-hidden'>
+        <div className={"absolute left-0 top-0 bottom-0 z-10 w-[250px] bg-white rounded-r-2xl shadow-[0_-4px_8px_rgba(0,0,0,0.1),_4px_0_8px_rgba(0,0,0,0.1),_0_4px_8px_rgba(0,0,0,0.1)] h-full transition duration-300 ${} "+(openSidebar ? 'translate-x-0' : '-translate-x-full shadow-none bg-gray-100')} >
+          <List
               sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
               component="nav"
               aria-labelledby="nested-list-subheader"
               subheader={
                 <ListSubheader component="div" id="nested-list-subheader">
-                  Filter By
+                  <div className='flex flex-row justify-between'>
+                    <span>Filter By</span>
+                    <button onClick={()=>setOpenSideBar(!openSidebar)} className='hover:cursor-pointer'><IoMdClose size={20}/></button>
+                  </div>
                 </ListSubheader>
               }
             >
@@ -145,9 +129,15 @@ const ProductAll = () => {
                 </List>
               </Collapse>
             </List>
-          </Popover>
         </div>
-        <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+
+        <div>
+          <button className="text-gray-500 p-2 border border-gray-300 rounded-r-xl drop-shadow-gray-800 hover:cursor-pointer" onClick={()=>setOpenSideBar(!openSidebar)}>
+            <FaAnglesRight size={20} />
+          </button>
+        </div>
+        
+        <div className='mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
             gap-x-2 gap-y-4 place-items-center mx-0'>
             {products.map((item) => (
                 <CardItem 
