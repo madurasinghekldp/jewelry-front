@@ -1,4 +1,6 @@
-export const reviews = [
+import { ReviewType } from "@/types/review-type";
+
+export const reviews:ReviewType[] = [
   // Existing reviews (first 10)...
   {
     id: 1,

@@ -1,4 +1,6 @@
-export const products = [
+import { ProductType } from "@/types/product-type";
+
+export const products:ProductType[] = [
   {
     id: 1,
     name: "Silver Earring with Blue Sapphire",
@@ -136,6 +138,16 @@ export const popularItems = products
 // Sort by id descending and take top 6
 export const newItems = products
   .sort((a, b) => b.id - a.id)
+  .slice(0, 6)
+  .map((item) => ({
+    id: item.id,
+    name: item.name,
+    price: item.price,
+    image: item.image,
+    material: item.material,
+  }));
+
+export const relatedItems = products
   .slice(0, 6)
   .map((item) => ({
     id: item.id,

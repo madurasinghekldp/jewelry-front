@@ -22,9 +22,9 @@ const Banner = () => {
             setCurrentJewIndex((prevIndex) => (prevIndex + 1) % jewelryImages.length);
         },4000);
         return () => clearInterval(timer);
-    },[]);
+    },[gemImages.length,jewelryImages.length]);
   return (
-    <div className='relative flex flex-row justify-center h-[400px] md:h-[730px] mt-15 md:-mx-10 -mx-5'>
+    <div className='relative flex flex-row justify-center h-[400px] md:h-screen mt-15 md:-mx-10 -mx-5'>
         <div className='z-20 flex justify-center items-center h-full mx-2'>
             <p className='text-4xl md:text-6xl text-center font-mono font-bold text-white text-shadow-lg'>
                 Discover Your Ultimate Beauty....

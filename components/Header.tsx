@@ -121,7 +121,7 @@ const Header = () => {
             >
                 <div className='flex flex-col p-2 w-[250px]'>
                     <p className=' text-center font-bold mb-1'>Your Cart Items</p>
-                    {cartItems.map((item,index)=>(
+                    {cartItems.map((item)=>(
                         <div className='flex flex-row p-2 items-center gap-2 hover:bg-gray-300' key={item.id}>
                             <Image src={item.image} alt='' width={60} height={60} className='rounded w-[60px] h-[60px] shrink-0'/>
                             <p className=' text-gray-500 truncate text-ellipsis'>{item.name}</p>

@@ -3,11 +3,9 @@ import { products } from '@/utils/products'
 import {  useState } from 'react'
 import CardItem from './Card'
 import { averageStars } from '@/utils/reviews'
-import { BsFilterSquare } from 'react-icons/bs';
-import {  Collapse, FormControlLabel, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Popover, Radio, RadioGroup } from '@mui/material';
+import {  Collapse, FormControlLabel, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Radio, RadioGroup } from '@mui/material';
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
 import { TbCategory } from 'react-icons/tb';
-import { FaRegWindowClose } from 'react-icons/fa';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 
@@ -17,7 +15,7 @@ const ProductAll = () => {
   const [openGender, setOpenGender] = useState(false);
   const [openMaterial, setOpenMaterial] = useState(false);
   const [openSidebar,setOpenSideBar] = useState(false);
-  const [tags, setTags] = useState<any[]>([]);
+  //const [tags, setTags] = useState<any[]>([]);
 
   const stars = (id:number) => {
       return averageStars(id);
@@ -34,16 +32,16 @@ const ProductAll = () => {
   };
 
   const handleChangeCategory = (event: React.ChangeEvent, value: string) => {
-    
-    console.log(tags);
+    console.log(value);
+    console.log(event);
   }
   const handleChangeGender = (event: React.ChangeEvent, value: string) => {
-    
-    console.log(tags);
+    console.log(value);
+    console.log(event);
   }
   const handleChangeMaterial = (event: React.ChangeEvent, value: string) => {
-    
-    console.log(tags);
+    console.log(value);
+    console.log(event);
   }
 
   return (

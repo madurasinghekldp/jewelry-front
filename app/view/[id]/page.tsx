@@ -3,6 +3,9 @@ import FooterComponent from '@/components/FooterComponent';
 import Header from '@/components/Header'
 import ImageSelection from '@/components/ImageSelection'
 import MediaPreview from '@/components/MediaPreview'
+import RelatedDesigns from '@/components/RelatedDesigns';
+import { ProductType } from '@/types/product-type';
+import { ReviewType } from '@/types/review-type';
 import { productById } from '@/utils/products';
 import { averageStars, reviewsByProductId } from '@/utils/reviews';
 import { Rating } from '@mui/material';
@@ -12,8 +15,8 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
 
     const { id } = React.use(params);
     const [media, setMedia] = React.useState<string>("");
-    const [product, setProduct] = useState<any>(null);
-    const [reviews, setReviews] = useState<any[]>([]);
+    const [product, setProduct] = useState<ProductType>();
+    const [reviews, setReviews] = useState<ReviewType[]>([]);
     const mediaList = useMemo(() => [
     "/videos/55744-503980978_small.mp4",
     "/images/ChatGPT_Image Jun 1, 2025, 08_29_04 PM.png",
@@ -79,7 +82,7 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                     <div>
                         <p className='text-3xl font-bold'>{product?.name}</p>
                     </div>
-                    <div className='flex flex-row items-center gap-2'>
+                    {product && <div className='flex flex-row items-center gap-2'>
                         <Rating 
                         sx={{'.MuiRating-icon':{color:'black'}}}
                         name="average-rating" 
@@ -88,7 +91,7 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                         size='small'
                         readOnly />
                         {stars(product?.id).toPrecision(2)}
-                    </div>
+                    </div>}
                     <div className='relative max-h-[300px] md:max-h-[150px]'>
                         <div className='pointer-events-none absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent'></div>
                         <div className="overflow-y-auto scrollbar-hide h-full">
@@ -119,7 +122,7 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                     </div>
                 </div>
             </div>
-            <div className='mt-10'>
+            <div className='mt-10 max-h-[500px] overflow-hidden'>
                 <div className='text-2xl'>Reviews</div>
                 <div className='bg-gray-300 rounded mt-2'>
                     {reviews.map((review,index)=>
@@ -141,6 +144,9 @@ const Page = ({params}:{params: Promise<{ id: number }>}) => {
                         </div>
                     )}
                 </div>
+            </div>
+            <div className='mt-10'>
+                <RelatedDesigns/>
             </div>
         </div>
         <FooterComponent/>
