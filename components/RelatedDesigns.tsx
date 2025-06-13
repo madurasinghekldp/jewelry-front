@@ -35,7 +35,7 @@ const RelatedDesigns = () => {
         </div>
       </div>
 
-      <div className='bg-gray-300 rounded p-3 flex flex-row items-center gap-2 mt-5'>
+      <div className='bg-gray-200 rounded p-3 flex flex-row items-center gap-2 mt-5'>
         {/* Left Arrow */}
         <button onClick={() => scroll('left')} className="p-2 hover:cursor-pointer">
           <FaCaretLeft />

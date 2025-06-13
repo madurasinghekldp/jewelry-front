@@ -6,9 +6,9 @@ const OrderList = () => {
   return (
     <div className='mt-20 flex flex-col'>
         <div className='text-xl text-white bg-black  py-2 px-4 rounded-full mx-auto'>Your Orders</div>
-        <div className='bg-gray-300 flex flex-col p-4 rounded mt-10'>
+        <div className='bg-gray-200 flex flex-col p-4 rounded mt-10'>
             <p className='font-bold'>Awaiting delivery</p>
-            <div className='border border-t-1 border-gray-400 mt-2'></div>
+            <div className='border border-t-1 border-gray-300 mt-2'></div>
             <div className='flex md:flex-row flex-col mt-2 justify-center items-center'>
                 <Image src={'/images/Sapphire_Elegance_with_Diamond_Sparkle.png'} alt={''} 
                 width={100} height={100} className='w-[90px] h-[90px]'/>
@@ -26,9 +26,9 @@ const OrderList = () => {
                 </div>
             </div>
         </div>
-        <div className='bg-gray-300 flex flex-col p-4 rounded mt-10'>
+        <div className='bg-gray-200 flex flex-col p-4 rounded mt-10'>
             <p className='font-bold'>Completed</p>
-            <div className='border border-t-1 border-gray-400 mt-2'></div>
+            <div className='border border-t-1 border-gray-300 mt-2'></div>
             <div className='flex md:flex-row flex-col mt-2 justify-center items-center'>
                 <Image src={'/images/Sapphire_Elegance_with_Diamond_Sparkle.png'} alt={''} 
                 width={100} height={100} className='w-[90px] h-[90px]'/>
